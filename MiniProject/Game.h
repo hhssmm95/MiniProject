@@ -5,6 +5,9 @@ class Game
 private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
+	SDL_Rect player_sRect;
+	SDL_Rect player_dRect;
+	SDL_Texture* texture1;
 	bool isRunning;
 
 public:
