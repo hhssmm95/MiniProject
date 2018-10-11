@@ -7,7 +7,7 @@ Game* new_game = 0;
 int main(int argc, char** argv)
 {
 	new_game = new Game();
-	new_game->Init("GunShooter", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, 0);
+	new_game->Init("Runner", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, 0);
 
 	while (new_game->Running())
 	{
