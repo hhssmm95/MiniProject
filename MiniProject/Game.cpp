@@ -1,5 +1,6 @@
 #include"Game.h"
-#include<SDL_image.h>
+#include"TextureManager.h"
+#include"Background.h"
 #include<iostream>
 using namespace std;
 
@@ -16,7 +17,13 @@ bool Game::Init(const char* title, int xpos, int ypos,
 		isRunning = true;
 
 		//플레이어 및 배경 텍스쳐 로드
-		SDL_Surface* TempSurface = IMG_Load("assets/animate-alpha.png");
+		TheTextureManager::Instance()->load("assets/animate-alpha.png", "Player", renderer);
+		TheTextureManager::Instance()->load("assets/background1.png", "Background", renderer);
+
+		m_gameObjects.push_back(new Player(new LoaderParams(0, 430, 128, 128, "Player")));
+		m_gameObjects.push_back(new Background(new LoaderParams(0, 0, 1280, 720, "Background")));
+		m_gameObjects.push_back(new Background(new LoaderParams(0, 1280, 1280, 720, "Background")));
+		/*SDL_Surface* TempSurface = IMG_Load("assets/animate-alpha.png");
 		SDL_Surface* bgTempSurface = IMG_Load("assets/background1.png");
 
 		playerTexture = SDL_CreateTextureFromSurface(renderer, TempSurface);
@@ -28,30 +35,30 @@ bool Game::Init(const char* title, int xpos, int ypos,
 
 		SDL_QueryTexture(playerTexture, NULL, NULL, &player_sRect.w, &player_sRect.h);
 		SDL_QueryTexture(bgTexture1, NULL, NULL, &bg1_sRect.w, &bg1_sRect.h);
-		SDL_QueryTexture(bgTexture2, NULL, NULL, &bg2_sRect.w, &bg2_sRect.h);
+		SDL_QueryTexture(bgTexture2, NULL, NULL, &bg2_sRect.w, &bg2_sRect.h);*/
 		//플레이어 위치, 크기 입력
-		player_sRect.w = 128; 
-		player_sRect.h = 128;
-		player_sRect.x = 0;
-		player_sRect.y = 0;
+		//player_sRect.w = 128; 
+		//player_sRect.h = 128;
+		//player_sRect.x = 0;
+		//player_sRect.y = 0;
 
-		player_dRect.x = 0;
-		player_dRect.y = 430;
-		player_dRect.w = player_sRect.w;
-		player_dRect.h = player_sRect.h;
+		//player_dRect.x = 0;
+		//player_dRect.y = 430;
+		//player_dRect.w = player_sRect.w;
+		//player_dRect.h = player_sRect.h;
 
-		//배경1 위치, 크기입력
-		bg1_sRect.w = bg1_dRect.w = 1280;
-		bg1_sRect.h = bg1_dRect.h = 720;
-		bg1_sRect.x = bg1_dRect.x = 0;
-		bg1_sRect.y = bg1_dRect.y = 0;
+		////배경1 위치, 크기입력
+		//bg1_sRect.w = bg1_dRect.w = 1280;
+		//bg1_sRect.h = bg1_dRect.h = 720;
+		//bg1_sRect.x = bg1_dRect.x = 0;
+		//bg1_sRect.y = bg1_dRect.y = 0;
 
-		//배걍2 위치, 크기입력
-		bg2_sRect.w = bg2_dRect.w = 1280;
-		bg2_sRect.h = bg2_dRect.h = 720;
-		bg2_sRect.x = 0;
-		bg2_dRect.x = 1280;
-		bg2_sRect.y = bg2_dRect.y = 0;
+		////배걍2 위치, 크기입력
+		//bg2_sRect.w = bg2_dRect.w = 1280;
+		//bg2_sRect.h = bg2_dRect.h = 720;
+		//bg2_sRect.x = 0;
+		//bg2_dRect.x = 1280;
+		//bg2_sRect.y = bg2_dRect.y = 0;
 		
 		tempY = player_dRect.y;
 
