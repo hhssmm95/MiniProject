@@ -11,6 +11,7 @@ private:
 	Player* player;
 
 	std::vector<GameObject*> m_gameObjects;
+	std::vector<GameObject*> m_backgrounds;
 	Game() {}
 	~Game() {}
 	SDL_Window* window;
@@ -43,9 +44,6 @@ public:
 	}
 
 	void quit();
-	bool isJumping = false;
-	bool isTop = false;
-	int tempY;
 
 	bool Init(const char* title, int xpos, int ypos,
 		int width, int height, bool fullscreen);
@@ -58,3 +56,4 @@ public:
 	}
 
 };
+typedef Game TheGame;

@@ -5,6 +5,9 @@ class Player : public SDLGameObject
 {
 private:
 	void handleInput();
+	bool isJumping;
+	bool isTop;
+	int originY;
 public:
 	Player(const LoaderParams* pParams);
 	virtual void draw();

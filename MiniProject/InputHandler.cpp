@@ -12,7 +12,6 @@ InputHandler::InputHandler()
 
 void InputHandler::clean()
 {
-	// 향후 추가 
 }
 
 void InputHandler::onMouseMove(SDL_Event event)
