@@ -6,7 +6,7 @@ Game* Game::s_pInstance = 0;
 
 int main(int argc, char** argv)
 {
-	TheGame::Instance()->Init("Runner", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, 0);
+	TheGame::Instance()->Init("Runner", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, 0);
 
 	const int FPS = 60;
 	const int DELAY_TIME = 1000.0f / FPS;
@@ -29,6 +29,8 @@ int main(int argc, char** argv)
 			SDL_Delay((int)(DELAY_TIME - frameTime));
 		}
 	}
+	std::cout << "game closing...\n";
+	TheGame::Instance()->Clean();
 
 	return 0;
 }

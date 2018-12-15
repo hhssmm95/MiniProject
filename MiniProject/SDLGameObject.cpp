@@ -13,7 +13,7 @@ m_velocity(0.0f, 0.0f), m_acceleration(0.0f, 0.0f)
 	m_currentFrame = 1;
 }
 
-void SDLGameObject::draw()
+void SDLGameObject::Draw()
 {
 	TextureManager::Instance()->drawFrame(m_textureID,
 		(int)m_position.getX(), (int)m_position.getY(),
@@ -22,14 +22,39 @@ void SDLGameObject::draw()
 
 }
 
-void SDLGameObject::update()
+void SDLGameObject::Update()
 {
 	m_velocity += m_acceleration;
 	m_position += m_velocity;
 
 }
 
-void SDLGameObject::clean()
+void SDLGameObject::Clean()
 {
 }
+Vector2D SDLGameObject::getPosition()
+{
+	return m_position;
+}
+Vector2D SDLGameObject::getVelocity()
+{
+	return m_velocity;
+}
+void SDLGameObject::setVelocity_X(int x)
+{
+	m_velocity.setX(x);
+}
+void SDLGameObject::setVelocity_Y(int y)
+{
+	m_velocity.setY(y);
+}
 
+int SDLGameObject::getWidth()
+{
+	return m_width;
+}
+
+int SDLGameObject::getHeight()
+{
+	return m_height;
+}

@@ -1,5 +1,6 @@
 #include<SDL.h>
 #include"Player.h"
+#include"GameStateMachine.h" 
 #include<vector>
 class Game
 {
@@ -8,30 +9,19 @@ private:
 
 	int m_currentFrame;
 
-	Player* player;
-
-	std::vector<GameObject*> m_gameObjects;
-	std::vector<GameObject*> m_backgrounds;
 	Game() {}
 	~Game() {}
 	SDL_Window* window;
 	SDL_Renderer* renderer;
-	/*
-	SDL_Rect player_sRect;
-	SDL_Rect player_dRect;
-	SDL_Rect bg1_sRect;
-	SDL_Rect bg1_dRect;
-	SDL_Rect bg2_sRect;
-	SDL_Rect bg2_dRect;
-	SDL_Texture* playerTexture;
-	SDL_Texture* bgTexture1;
-	SDL_Texture* bgTexture2;*/
+
 	bool isRunning;
-	
+	GameStateMachine* m_pGameStateMachine;
+
 
 
 public:
 	SDL_Renderer * getRenderer() const { return renderer; }
+	GameStateMachine* getStateMachine() { return m_pGameStateMachine; }
 
 	static Game* Instance()
 	{
@@ -54,6 +44,7 @@ public:
 	bool Running() {
 		return isRunning;
 	}
+	void Quit();
 
 };
 typedef Game TheGame;

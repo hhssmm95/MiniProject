@@ -14,6 +14,14 @@ void InputHandler::clean()
 {
 }
 
+void InputHandler::reset()
+{
+	for (int i = 0; i < m_mouseButtonStates.size(); i++)
+	{
+		m_mouseButtonStates[i] = false;
+	}
+}
+
 void InputHandler::onMouseMove(SDL_Event event)
 {
 	m_mousePosition->setX(event.motion.x);

@@ -1,19 +1,19 @@
-#include "Player.h"
+#include "HitBox.h"
 #include "InputHandler.h"
 #include<SDL.h>
 
-Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams)
+HitBox::HitBox(const LoaderParams* pParams) : SDLGameObject(pParams)
 {
 	isJumping = false;
 	isTop = false;
 	originY = pParams->getY();
 }
-void Player::Draw()
+void HitBox::Draw()
 {
 	SDLGameObject::Draw();
 }
 
-void Player::Update()
+void HitBox::Update()
 {
 	m_velocity.setX(0);
 	m_velocity.setY(0);
@@ -48,11 +48,11 @@ void Player::Update()
 
 }
 
-void Player::Clean()
+void HitBox::Clean()
 {
 }
 
-void Player::handleInput()
+void HitBox::handleInput()
 {
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
 	{

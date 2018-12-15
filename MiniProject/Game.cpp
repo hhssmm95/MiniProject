@@ -2,10 +2,13 @@
 #include"TextureManager.h"
 #include"Background.h"
 #include "InputHandler.h"
-#include<iostream>
+#include "MenuState.h"
+#include "PlayState.h"
 using namespace std;
 
 InputHandler* InputHandler::s_pInstance = 0;
+MenuState* MenuState::s_pInstance = 0;
+PlayState* PlayState::s_pInstance = 0;
 
 bool Game::Init(const char* title, int xpos, int ypos,
 	int width, int height, bool fullscreen)
@@ -19,22 +22,17 @@ bool Game::Init(const char* title, int xpos, int ypos,
 
 		isRunning = true;
 
-		//플레이어 및 배경 텍스쳐 로드
-		TheTextureManager::Instance()->load("assets/animate-alpha.png", "Player", renderer);
-		TheTextureManager::Instance()->load("assets/background2.png", "Background", renderer);
-
 		
-		m_gameObjects.push_back(new Background(new LoaderParams(0, 0, 1280, 720, "Background")));
-		m_gameObjects.push_back(new Background(new LoaderParams(1280, 0, 1280, 720, "Background")));
-		m_gameObjects.push_back(new Player(new LoaderParams(0, 430, 128, 128, "Player")));
-		//tempY = player_dRect.y;
-
-		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-
 	}
 	else {
 		return false;
 	}
+
+	m_pGameStateMachine = new GameStateMachine();
+	m_pGameStateMachine->changeState(MenuState::Instance());
+
+
+	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
 
 	return true;
 }
@@ -42,23 +40,14 @@ bool Game::Init(const char* title, int xpos, int ypos,
 void Game::Render()
 {
 	SDL_RenderClear(renderer);
-	for (std::vector<GameObject*>::size_type i = 0;
-		i != m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->draw();
-	}
+	m_pGameStateMachine->Render();
+
 	SDL_RenderPresent(renderer);
 }
 
 void Game::Update()
 {
-	for (std::vector<GameObject*>::size_type i = 0;
-		i != m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->update();
-	}
-
-	
+	m_pGameStateMachine->Update();
 }
 
 void Game::Clean()
@@ -73,6 +62,10 @@ void Game::Clean()
 void Game::HandleEvents()
 {
 	TheInputHandler::Instance()->update();
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN))
+	{
+		m_pGameStateMachine->changeState(PlayState::Instance());
+	}
 }
 
 void Game::quit()

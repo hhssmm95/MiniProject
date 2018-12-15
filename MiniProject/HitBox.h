@@ -1,7 +1,7 @@
 #pragma once
 #include "SDLGameObject.h"
 
-class Player : public SDLGameObject
+class HitBox : public SDLGameObject
 {
 private:
 	void handleInput();
@@ -9,7 +9,7 @@ private:
 	bool isTop;
 	int originY;
 public:
-	Player(const LoaderParams* pParams);
+	HitBox(const LoaderParams* pParams);
 	virtual void Draw();
 	virtual void Update();
 	virtual void Clean();

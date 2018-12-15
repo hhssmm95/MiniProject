@@ -8,8 +8,8 @@ private:
 //	void handleInput();
 public:
 	Background(const LoaderParams* pParams);
-	virtual void draw();
-	virtual void update();
-	virtual void clean();
+	virtual void Draw();
+	virtual void Update();
+	virtual void Clean();
 	float GetX();
 };
