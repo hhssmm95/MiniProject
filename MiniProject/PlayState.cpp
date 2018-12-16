@@ -11,6 +11,7 @@
 #include"GameOverState.h"
 #include"CollisionManager.h"
 #include "ProjectileManager.h"
+#include<SDL_ttf.h>
 #include<time.h>
 
 #define PLAYER 2
@@ -65,6 +66,7 @@ void PlayState::Update()
 		spawnCooltime = 0;
 	}
 	TheProjectileManager::Instance()->update();
+
 	GameState::Update();
 
 	shotCooltime++;
@@ -75,6 +77,8 @@ void PlayState::Render()
 {
 	GameState::Render();
 	TheProjectileManager::Instance()->render();
+	TextureManager::Instance()->DrawText("score_text", 10, 10,
+		TheGame::Instance()->getRenderer());
 }
 bool PlayState::onEnter()
 {
@@ -90,6 +94,11 @@ bool PlayState::onEnter()
 	}
 	if (!TheTextureManager::Instance()->Load("assets/wall1.png",
 		"barrier", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TextureManager::Instance()->LoadText("assets/NanumGothicExtraBold.ttf", 20,
+		"SCORE: ", "score_text", TheGame::Instance()->getRenderer()))
 	{
 		return false;
 	}

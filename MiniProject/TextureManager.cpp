@@ -1,5 +1,6 @@
 #include"TextureManager.h"
 #include<SDL_image.h>
+#include<SDL_ttf.h>
 
 bool TextureManager::Load(std::string fileName, std::string id,
 	SDL_Renderer* pRenderer)
@@ -21,6 +22,48 @@ bool TextureManager::Load(std::string fileName, std::string id,
 	return false;
 
 }
+
+bool TextureManager::LoadText(const char* fontName, int size, const char* message, std::string id, SDL_Renderer* pRenderer)
+{
+	TTF_Font* font;
+	font = TTF_OpenFont(fontName, size);
+	if (font == NULL)
+		return false;
+
+	SDL_Color color;
+	color.r = 255;
+	color.g = 255;
+	color.b = 255;
+
+	SDL_Surface* pSurface;
+	pSurface = TTF_RenderText_Solid(font, message, color);
+	SDL_Texture* text = SDL_CreateTextureFromSurface(pRenderer, pSurface);
+
+	if (text != 0) {
+		m_textureMap[id] = text;
+		return true;
+	}
+	return false;
+
+}
+
+void TextureManager::DrawText(std::string id, int x, int y, SDL_Renderer* pRenderer)
+{
+
+	SDL_Rect textRect;
+
+	int w = 0;
+	int h = 0;
+
+	SDL_QueryTexture(m_textureMap[id], NULL, NULL, &w, &h);
+	textRect.x = 0;
+	textRect.y = 0;
+	textRect.w = w;
+	textRect.h = h;
+
+	SDL_RenderCopy(pRenderer, m_textureMap[id], NULL, &textRect);
+}
+
 
 void TextureManager::Draw(std::string id,
 	int x, int y, int width, int height,

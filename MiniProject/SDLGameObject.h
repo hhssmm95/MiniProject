@@ -7,6 +7,7 @@ class SDLGameObject : public GameObject
 public:
 	SDLGameObject(const LoaderParams* pParams);
 	virtual void Draw();
+	void staticDraw();
 	virtual void Update();
 	virtual void Clean();
 	virtual Vector2D getPosition();

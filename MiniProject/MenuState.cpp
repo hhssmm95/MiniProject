@@ -28,8 +28,8 @@ bool MenuState::onEnter()
 	{
 		return false;
 	}
-	if (!TheTextureManager::Instance()->Load("assets/background1.png",
-		"background", TheGame::Instance()->getRenderer()))
+	if (!TheTextureManager::Instance()->Load("assets/title1.png",
+		"title", TheGame::Instance()->getRenderer()))
 	{
 		return false;
 	}
@@ -40,9 +40,9 @@ bool MenuState::onEnter()
 	GameObject* button2 = new MenuButton(
 		new LoaderParams(100, 300, 400, 100, "exitbutton"),
 		s_exitFromMenu);
-	GameObject* bg = new SDLGameObject(
-		new LoaderParams(0, 0, 640, 480, "background"));
-	m_gameObjects.push_back(bg);
+	GameObject* title = new SDLGameObject(
+		new LoaderParams(0, 0, 640, 480, "title"));
+	m_gameObjects.push_back(title);
 	m_gameObjects.push_back(button1);
 	m_gameObjects.push_back(button2);
 	

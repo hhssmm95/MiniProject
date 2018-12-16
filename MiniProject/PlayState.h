@@ -1,6 +1,8 @@
 #pragma once
 #include "GameState.h"
 #include "SDLGameObject.h"
+#include <SDL.h>
+#include<SDL_image.h>
 
 class PlayState : public GameState
 {
@@ -31,4 +33,6 @@ private:
 	PlayState(){}
 	~PlayState(){}
 	std::vector<GameObject*> bullets;
+	SDL_Texture* text;
+	SDL_Rect textRect;
 };

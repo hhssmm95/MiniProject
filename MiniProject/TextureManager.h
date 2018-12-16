@@ -19,6 +19,8 @@ public:
 		SDL_Renderer* pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
 	void clearFromTextureMap(std::string id);
 
+	bool LoadText(const char* fontName, int size, const char* message, std::string id, SDL_Renderer* pRenderer);
+	void DrawText(std::string id, int x, int y, SDL_Renderer* pRenderer);
 	static TextureManager* Instance()
 	{
 		static TextureManager* s_pInstance;
