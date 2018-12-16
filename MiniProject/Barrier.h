@@ -9,4 +9,6 @@ public:
 	virtual void Draw();
 	virtual void Update();
 	virtual void Clean();
+	virtual int getX();
+	virtual int getWidth();
 };

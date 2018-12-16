@@ -6,7 +6,7 @@ Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams)
 {
 	isJumping = false;
 	isTop = false;
-	originY = pParams->getY();
+	originY = 260;
 }
 void Player::Draw()
 {
@@ -67,4 +67,13 @@ void Player::handleInput()
 		isJumping = true;
 	}
 
+}
+
+int Player::getX()
+{
+	return SDLGameObject::getX();
+}
+int Player::getY()
+{
+	return SDLGameObject::getY();
 }

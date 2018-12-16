@@ -18,12 +18,12 @@ void MenuState::Render()
 
 bool MenuState::onEnter()
 {
-	if (!TheTextureManager::Instance()->Load("assets/button.png",
-		"playbutton", TheGame::Instance()->getRenderer()))
+	if (!TheTextureManager::Instance()->Load("assets/run.png",
+		"runbutton", TheGame::Instance()->getRenderer()))
 	{
 		return false;
 	}
-	if (!TheTextureManager::Instance()->Load("assets/exit.png",
+	if (!TheTextureManager::Instance()->Load("assets/exit2.png",
 		"exitbutton", TheGame::Instance()->getRenderer()))
 	{
 		return false;
@@ -34,11 +34,11 @@ bool MenuState::onEnter()
 		return false;
 	}
 	GameObject* button1 = new MenuButton(
-		new LoaderParams(100, 100, 400, 100, "playbutton"),
+		new LoaderParams(140, 200, 343, 105, "runbutton"),
 		s_menuToPlay);
 
 	GameObject* button2 = new MenuButton(
-		new LoaderParams(100, 300, 400, 100, "exitbutton"),
+		new LoaderParams(140, 340, 343, 105, "exitbutton"),
 		s_exitFromMenu);
 	GameObject* title = new SDLGameObject(
 		new LoaderParams(0, 0, 640, 480, "title"));

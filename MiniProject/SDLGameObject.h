@@ -14,8 +14,12 @@ public:
 	virtual Vector2D getVelocity();
 	virtual void setVelocity_X(int x);
 	virtual void setVelocity_Y(int y);
-	int getWidth();
-	int getHeight();
+	virtual int getX();
+	virtual int getY();
+	virtual int getWidth();
+	virtual int getHeight();
+	void setX(int x);
+	void setY(int y);
 protected:
 	int m_width;
 	int m_height;

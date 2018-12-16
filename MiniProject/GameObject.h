@@ -11,8 +11,8 @@ public:
 	virtual Vector2D getVelocity() = 0;
 	virtual void setVelocity_X(int x) = 0;
 	virtual void setVelocity_Y(int y) = 0;
-	int getWidth();
-	int getHeight();
+
+
 protected:
 	GameObject(const LoaderParams* pParams) {}
 	virtual ~GameObject() {}

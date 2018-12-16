@@ -2,11 +2,14 @@
 #include <string>
 #include <vector>
 #include"GameObject.h"
+#include"SDLGameObject.h"
 
 class GameState
 {
 protected:
 	std::vector<GameObject*> m_gameObjects;
+	std::vector<SDLGameObject*> m_SDLObjects;
+	int resetCount = 0;
 public:
 	virtual void Update();
 	virtual void Render();

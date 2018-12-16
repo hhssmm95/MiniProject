@@ -64,3 +64,18 @@ int SDLGameObject::getHeight()
 {
 	return m_height;
 }
+
+int SDLGameObject::getX()
+{
+	return m_position.getX();
+}
+
+int SDLGameObject::getY()
+{
+	return m_position.getY();
+}
+
+//void SDLGameObject::setX(int x)
+//{
+//	m_position.setX()
+//}

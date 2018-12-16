@@ -29,7 +29,12 @@ private:
 	static PlayState* s_pInstance;
 	int shotCooltime = 0;
 	int spawnCooltime = 200;
+	int beginTick;
 	int playTime;
+	int score = 0;
+	bool scoreCheck1 = false;
+	bool scoreCheck2 = false;
+	bool fireOn = false;
 	PlayState(){}
 	~PlayState(){}
 	std::vector<GameObject*> bullets;

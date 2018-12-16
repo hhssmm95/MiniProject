@@ -9,8 +9,10 @@ Barrier::Barrier(const LoaderParams* pParams) : SDLGameObject(pParams)
 
 void Barrier::Update()
 {
-	if (PlayState::Instance()->getplayTime() >= 30)
+	if (PlayState::Instance()->getplayTime() >= 30 && PlayState::Instance()->getplayTime() < 60)
 		m_velocity.setX(-8);
+	else if (PlayState::Instance()->getplayTime() >= 60)
+		m_velocity.setX(-12);
 	SDLGameObject::Update();
 }
 
@@ -24,4 +26,12 @@ void Barrier::Draw()
 void Barrier::Clean()
 {
 	SDLGameObject::Clean();
+}
+int Barrier::getWidth()
+{
+	return SDLGameObject::getWidth();
+}
+int Barrier::getX()
+{
+	return SDLGameObject::getX();
 }
