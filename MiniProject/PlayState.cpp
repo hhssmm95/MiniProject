@@ -1,16 +1,13 @@
 #include "PlayState.h"
 #include "TextureManager.h"
 #include "Player.h"
-#include "Enemy.h"
 #include "Background.h"
 #include "Barrier.h"
 #include "HitBox.h"
 #include "Game.h"
 #include"InputHandler.h"
-#include"PauseState.h"
 #include"GameOverState.h"
 #include"CollisionManager.h"
-#include "ProjectileManager.h"
 #include<SDL_ttf.h>
 #include<time.h>
 
@@ -21,7 +18,6 @@
 #define ENEMY 4
 const std::string PlayState::s_playID = "PLAY";
 CollisionManager* TheCollisionManager::s_pInstance = 0;
-ProjectileManager* TheProjectileManager::s_pInstance = 0;
 void PlayState::Update()
 {
 	//플레이어 히트박스와 적(장애물) 충돌시
@@ -128,7 +124,6 @@ void PlayState::Update()
 //	m_SDLObjects[FIRE]->getPosition().setX(m_SDLObjects[PLAYER]->getX() - 81);
 //	m_SDLObjects[FIRE]->getPosition().setY(m_SDLObjects[PLAYER]->getY() + 60);
 
- 	TheProjectileManager::Instance()->update();
 	GameState::Update();
 
 
@@ -136,7 +131,6 @@ void PlayState::Update()
 void PlayState::Render()
 {
 	GameState::Render();
-	TheProjectileManager::Instance()->render();
 	TextureManager::Instance()->DrawText("score_text", 10, 10,
 		TheGame::Instance()->getRenderer());
 	TextureManager::Instance()->UpdateAndDrawNumber(score, 100, 10,

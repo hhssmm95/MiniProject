@@ -42,9 +42,6 @@
     <ClCompile Include="CollisionManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="GameOverState.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -60,13 +57,7 @@
     <ClCompile Include="MenuState.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="PauseState.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="PlayState.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="ProjectileManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Barrier.cpp">
@@ -110,9 +101,6 @@
     <ClInclude Include="CollisionManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="GameOverState.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -128,13 +116,7 @@
     <ClInclude Include="MenuState.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="PauseState.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="PlayState.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="ProjectileManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Barrier.h">
